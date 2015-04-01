@@ -1,0 +1,23 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-abbr-reader.ss" "lang")((modname 2playercircs) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+(require picturing-programs)
+(require 2htdp/universe)
+
+(define-struct circ (x y rad col))
+
+(define p1 (make-circ 0 0 20 "blue"))
+(define p2 (make-circ 0 250 20 "orange"))
+
+(define model '(p1 p2))
+
+(define(keyhand model key)
+   (cond [(key=? key "up")   ]
+         [(key=? key "down") ]
+         [(key=? key "right") ]
+         [(key=? key "left")  ]
+         [(key=? key "w")   ]
+         [(key=? key "s") ]
+         [(key=? key "d") ]
+         [(key=? key "a")  ]
+         [else model]))

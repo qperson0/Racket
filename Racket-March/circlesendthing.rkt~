@@ -1,0 +1,34 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-abbr-reader.ss" "lang")((modname circlesendthing) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+(require picturing-programs)
+(require 2htdp/universe)
+
+
+(define model (make-posn 50 50))
+(define col "blue")
+
+;sending a message: return a package 
+
+;(make-package ())
+;serialize-send as list yada yada
+
+(define(keyhand model key)
+   (cond [(key=? key "up")  (list (posn-x model) (sub1 (posn-y model)))]
+         [(key=? key "down") (list (posn-x model) (add1 (posn-y model)))]
+         [(key=? key "right")  (list (add1 (posn-x model)) (posn-y model))]
+         [(key=? key "up")  (list (sub1 (posn-x model)) (posn-y model))]
+         [else model]))
+
+(define(sendm model)
+  (make-package ))
+
+(define(drawhand model)
+  (place-image (circle 50 "solid" col) (posn-x model) (posn-y model) (rectangle 500 500 "solid" "white")))
+
+(big-bang model 
+          (on-tick sendm 0.25)
+          (on-key keyhand)
+          (on-draw drawhand))
+
+
